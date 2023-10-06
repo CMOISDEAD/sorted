@@ -1,4 +1,6 @@
-// populate an array with random numbers
 export const randomArray = (length) => {
-  return [...Array(length)].map(() => Math.floor(Math.random() * length));
+  const matrix = [...Array(length).keys()];
+  return shuffle(matrix);
 };
+
+export const shuffle = (array) => array.sort(() => Math.random() - 0.5);

@@ -1,4 +1,4 @@
-import { bubble, insertion, selection } from "./sort";
+import { bubble, insertion, merge, quick, selection } from "./sort";
 
 // array of sorting algorithms
 export const algorithms = [
@@ -13,5 +13,13 @@ export const algorithms = [
   {
     name: "Insertion Sort",
     fn: insertion,
+  },
+  {
+    name: "Merge Sort",
+    fn: merge,
+  },
+  {
+    name: "Quick Sort",
+    fn: quick,
   },
 ];

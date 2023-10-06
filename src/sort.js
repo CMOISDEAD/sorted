@@ -63,3 +63,49 @@ export const insertion = async (arr, ctx) => {
   complete(arr, ctx);
   return arr;
 };
+
+// Merge Sort Algorithm
+export const merge = async (arr, ctx) => {
+  draw(arr, 0, ctx);
+  await delay(5);
+  let size = arr.length;
+  if (size < 2) {
+    return arr;
+  }
+  let mid = Math.floor(size / 2);
+  let left = arr.slice(0, mid);
+  let right = arr.slice(mid);
+  return mergeSort(await merge(left, ctx), await merge(right, ctx), ctx);
+};
+
+const mergeSort = async (left, right, ctx) => {
+  let result = [];
+  let i = 0;
+  let j = 0;
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      result.push(left[i++]);
+    } else {
+      result.push(right[j++]);
+    }
+    draw(result.concat(left, right), i, ctx);
+    await delay(5);
+  }
+  return result.concat(left.slice(i)).concat(right.slice(j));
+};
+
+// Quick Sort Algorithm
+export const quick = async (arr, ctx) => {
+  draw(arr, 0, ctx);
+  await delay(5);
+  return quickSort(arr, 0, arr.length - 1, ctx);
+};
+
+const quickSort = async (arr, low, high, ctx) => {
+  if (low < high) {
+    let pi = await partition(arr, low, high, ctx);
+    await quickSort(arr, low, pi - 1, ctx);
+    await quickSort(arr, pi + 1, high, ctx);
+  }
+  return arr;
+};

@@ -1,9 +1,10 @@
 import { randomArray } from "./src/utils";
 import { draw } from "./src/drawer";
-import "./style.css";
 import { algorithms } from "./src/algorithms";
+import "./style.css";
 
-const array = randomArray(440);
+const n = window.innerWidth - 25;
+const array = randomArray(n);
 
 document.querySelector("#app").innerHTML = `
   <div class="info">
